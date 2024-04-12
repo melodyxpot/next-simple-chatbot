@@ -20,8 +20,6 @@ export default function Chat() {
             </p>
             <Markdown
               content={m.content}
-              message={m}
-              messages={messages}
               isLatestMessage={m.id === messages[messages.length - 1].id}
               isGenerating={isLoading}
               showCursor
