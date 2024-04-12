@@ -1,0 +1,152 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --foreground-rgb: 0, 0, 0;
+  --background-start-rgb: 214, 219, 220;
+  --background-end-rgb: 255, 255, 255;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --foreground-rgb: 255, 255, 255;
+    --background-start-rgb: 0, 0, 0;
+    --background-end-rgb: 0, 0, 0;
+  }
+}
+
+body {
+  color: rgb(var(--foreground-rgb));
+  position: relative;
+  background: linear-gradient(
+      to bottom,
+      transparent,
+      rgb(var(--background-end-rgb))
+    )
+    rgb(var(--background-start-rgb));
+}
+
+@layer utilities {
+  .text-balance {
+    text-wrap: balance;
+  }
+}
+
+.result-thinking:empty:last-child:after {
+  -webkit-font-smoothing: subpixel-antialiased;
+  -webkit-animation: pulseSize 1.25s ease-in-out infinite;
+  animation: pulseSize 1.25s ease-in-out infinite;
+  -webkit-backface-visibility: hidden;
+  backface-visibility: hidden;
+  background-color: #0d0d0d;
+  background-color: var(--text-primary);
+  border-radius: 50%;
+  box-sizing: border-box;
+  content: " ";
+  display: block;
+  height: 12px;
+  position: absolute;
+  top: -11px;
+  -webkit-transform: translateZ(0);
+  transform: translateZ(0);
+  -webkit-transform-origin: center;
+  transform-origin: center;
+  width: 12px;
+  will-change: transform;
+}
+
+code,
+pre {
+  font-family: Söhne Mono, Monaco, Andale Mono, Ubuntu Mono, monospace !important;
+}
+code[class="language-plaintext"] {
+  white-space: pre-line;
+}
+code.hljs,
+code[class*="language-"],
+pre[class*="language-"] {
+  word-wrap: normal;
+  background: none;
+  color: #fff;
+  -webkit-hyphens: none;
+  hyphens: none;
+  font-size: 0.85rem;
+  line-height: 1.5;
+  tab-size: 4;
+  text-align: left;
+  white-space: pre;
+  word-break: normal;
+  word-spacing: normal;
+}
+pre[class*="language-"] {
+  border-radius: 0.3em;
+  overflow: auto;
+}
+:not(pre) > code.hljs,
+:not(pre) > code[class*="language-"] {
+  border-radius: 0.3em;
+  padding: 0.1em;
+  white-space: normal;
+}
+.hljs-comment {
+  color: hsla(0, 0%, 100%, 0.5);
+}
+.hljs-meta {
+  color: hsla(0, 0%, 100%, 0.6);
+}
+.hljs-built_in,
+.hljs-class .hljs-title {
+  color: #e9950c;
+}
+.hljs-doctag,
+.hljs-formula,
+.hljs-keyword,
+.hljs-literal {
+  color: #2e95d3;
+}
+.hljs-addition,
+.hljs-attribute,
+.hljs-meta-string,
+.hljs-regexp,
+.hljs-string {
+  color: #00a67d;
+}
+.hljs-attr,
+.hljs-number,
+.hljs-selector-attr,
+.hljs-selector-class,
+.hljs-selector-pseudo,
+.hljs-template-variable,
+.hljs-type,
+.hljs-variable {
+  color: #df3079;
+}
+.hljs-bullet,
+.hljs-link,
+.hljs-selector-id,
+.hljs-symbol,
+.hljs-title {
+  color: #f22c3d;
+}
+
+/* width */
+::-webkit-scrollbar {
+  width: 5px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: #888;
+  border-radius: 3px;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  background: #555;
+}
