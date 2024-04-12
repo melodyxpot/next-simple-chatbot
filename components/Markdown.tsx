@@ -90,7 +90,6 @@ const Markdown = memo(
           [remarkMath, { singleDollarTextMath: true }]
         ]}
         rehypePlugins={rehypePlugins}
-        // linkTarget="_new"
         components={
           {
             code,
