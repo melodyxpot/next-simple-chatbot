@@ -4,11 +4,10 @@ import ReactMarkdown from "react-markdown";
 import rehypeKatex from "rehype-katex";
 import rehypeHighlight from "rehype-highlight";
 import remarkMath from "remark-math";
-import supersub from "remark-supersub";
 import remarkGfm from "remark-gfm";
 import rehypeRaw from "rehype-raw";
 import type { PluggableList } from "unified";
-import { cn, langSubset, processLaTeX, validateIframe } from "@/utils";
+import { cn, langSubset } from "@/utils";
 import CodeBlock from "./CodeBlock";
 type TCodeProps = {
   inline: boolean;
@@ -47,12 +46,7 @@ const Markdown = memo(
     isLatestMessage = false
   }: TContentProps) => {
     const isInitializing = content === "";
-
     let currentContent = content;
-    if (!isInitializing) {
-      currentContent = currentContent?.replace("z-index: 1;", "") ?? "";
-      currentContent = processLaTeX(content);
-    }
 
     const rehypePlugins: PluggableList = [
       [rehypeKatex, { output: "mathml" }],
@@ -77,9 +71,6 @@ const Markdown = memo(
         </div>
       );
     }
-
-    let isValidIframe: string | boolean | null = false;
-    isValidIframe = validateIframe(currentContent);
 
     return (
       <ReactMarkdown
@@ -111,15 +102,3 @@ const Markdown = memo(
 );
 
 export default Markdown;
-
-// import { FC, memo } from "react";
-// import ReactMarkdown, { Options } from "react-markdown";
-
-// const MemoizedReactMarkdown: FC<Options> = memo(
-//   ReactMarkdown,
-//   (prevProps, nextProps) =>
-//     prevProps.children === nextProps.children &&
-//     prevProps.className === nextProps.className
-// );
-
-// export default MemoizedReactMarkdown;
