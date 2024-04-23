@@ -24,6 +24,7 @@ export default function Chat() {
               isGenerating={isLoading}
               showCursor
             />
+            {/* <Markdown>{m.content}</Markdown> */}
           </div>
         ))}
       </div>

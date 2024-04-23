@@ -7,7 +7,6 @@ import remarkMath from "remark-math";
 import supersub from "remark-supersub";
 import remarkGfm from "remark-gfm";
 import rehypeRaw from "rehype-raw";
-import { Message } from "ai";
 import type { PluggableList } from "unified";
 import { cn, langSubset, processLaTeX, validateIframe } from "@/utils";
 import CodeBlock from "./CodeBlock";
@@ -85,16 +84,19 @@ const Markdown = memo(
     return (
       <ReactMarkdown
         remarkPlugins={[
-          supersub,
+          // supersub,
           remarkGfm,
-          [remarkMath, { singleDollarTextMath: true }]
+          remarkMath
+          // [remarkMath, { singleDollarTextMath: true }]
         ]}
         rehypePlugins={rehypePlugins}
         components={
           {
             code,
-            // a,
-            p
+
+            p({ children }) {
+              return <p className="mb-2 last:mb-0">{children}</p>;
+            }
           } as {
             [nodeType: string]: React.ElementType;
           }
@@ -109,3 +111,15 @@ const Markdown = memo(
 );
 
 export default Markdown;
+
+// import { FC, memo } from "react";
+// import ReactMarkdown, { Options } from "react-markdown";
+
+// const MemoizedReactMarkdown: FC<Options> = memo(
+//   ReactMarkdown,
+//   (prevProps, nextProps) =>
+//     prevProps.children === nextProps.children &&
+//     prevProps.className === nextProps.className
+// );
+
+// export default MemoizedReactMarkdown;
